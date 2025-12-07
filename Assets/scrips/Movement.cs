@@ -4,25 +4,20 @@ public class Movement : MonoBehaviour
 {   
     //Movement default settings; Können in evtl. Settings geändert werden dann
     
-    public Settings settings;
+    Settings settings;
     private float sprint_spd;
+    public float basespeed = 12f;
     public float speed;
-    // x rotation ist oben unten y rechts links
-    //
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+       settings = GetComponent<Settings>(); 
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        speed = 5 * sprint_spd;
+        speed = basespeed * sprint_spd;
         Move();
     }
-
-
     void Move()
     {
         if (Input.GetKey(settings.set_forward))
@@ -61,7 +56,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(settings.set_jump))
         {
             //movement springen
+
         }
     }
 }   
-//Input.mousePosition
