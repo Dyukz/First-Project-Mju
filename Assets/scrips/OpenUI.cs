@@ -4,16 +4,13 @@ public class OpenUI : MonoBehaviour
 
 {
     Settings settings;
-    public GameObject menu1; //test Menu
+    public GameObject[] game; // alle games reinmachen wenn das game active wird wird das script(game) auf den ausgeführt.
     public bool inUI;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private int nextUI = 0;     // beim schaffen vom game ++
     void Start()
     {
         settings = GetComponent<Settings>();
-        menu1.SetActive(false);
     }
-
-    // Update is called once per frame
     void Update()
     {   
         if (inUI)
@@ -28,7 +25,7 @@ public class OpenUI : MonoBehaviour
         if (Input.GetKeyDown(settings.set_interact))
         {
             inUI = true;
-            menu1.SetActive(true); //menu1.SetActive(!menu1.activeSelf);
+            game[nextUI].SetActive(true); //menu1.SetActive(!menu1.activeSelf);
         }
     }
     }
@@ -36,7 +33,7 @@ public class OpenUI : MonoBehaviour
     void ExitMenu()
     {
         inUI = false;
-        menu1.SetActive(false);
+        game[nextUI].SetActive(false);
     }
     
 }

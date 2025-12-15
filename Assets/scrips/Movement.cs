@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -45,11 +46,11 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey(settings.set_sprint))
         {
-            sprint_spd = 1.3f;  //2f = 2x min 1.0f sonst langsamer
+            sprint_spd = 1.5f;  //2f = 2x min 1.0f sonst langsamer
         }   
         else 
         {
-            sprint_spd = 1f; 
+            sprint_spd = 1f;
         }
 
         if (Input.GetKey(settings.set_jump))
