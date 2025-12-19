@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {    
-    Settings settings;
-    OpenUI ui;
     public GameObject kamera;
     public float speed = 12f;
     public float gravity = 0f;
+    public float mouseSensitivity = 200f;
     void Start()
     {
-       settings = GetComponent<Settings>();
        Cursor.lockState = CursorLockMode.Locked;
     }
     
@@ -27,10 +25,10 @@ public class Movement : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y") * -1;
  
-        Vector3 xRotation = new Vector3(0, mouseX, 0) * settings.mouseSensitivity * Time.deltaTime;
+        Vector3 xRotation = new Vector3(0, mouseX, 0) * mouseSensitivity * Time.deltaTime;
         transform.Rotate(xRotation);
  
-        Vector3 yRotation = new Vector3(mouseY, 0, 0) * settings.mouseSensitivity * Time.deltaTime;
+        Vector3 yRotation = new Vector3(mouseY, 0, 0) * mouseSensitivity * Time.deltaTime;
         kamera.transform.Rotate(yRotation);
  
         Vector3 move = transform.forward * y + transform.right * x + Vector3.up * gravity;
