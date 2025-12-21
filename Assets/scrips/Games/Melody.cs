@@ -19,7 +19,6 @@ public class Melody : MonoBehaviour
 
     public void Reset()
     {   
-        Cursor.lockState = CursorLockMode.None;
         score = 0;
         scoreText.text = "" + score + " / " + maxScore;
         NewTarget();

@@ -6,7 +6,7 @@ public class GameUIManager : MonoBehaviour
 {
     public GameObject[] games; // alle games reinmachen wenn das game active wird wird das script(game) auf den ausgeführt.
     public bool inGame;
-    private int currentGame = 0;
+    private int currentGame = 1;
     void Start()
     {
         for (int i = 0; i < games.Length; i++)
@@ -26,6 +26,7 @@ public class GameUIManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape))
             {
                 ExitGame(currentGame);
+                Cursor.lockState = CursorLockMode.Locked;
             }
     }
 
@@ -39,7 +40,8 @@ public class GameUIManager : MonoBehaviour
     {   
         inGame = true;
         games[index].SetActive(true);
-        games[index].GetComponent<Melody>().Reset();
+        //games[index].GetComponent<Melody>().Reset();
+        games[index].GetComponent<Numbers>().Reset();
     }
     
 }
