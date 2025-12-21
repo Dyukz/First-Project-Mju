@@ -1,62 +1,38 @@
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
-{   
-    //Movement default settings; Können in evtl. Settings geändert werden dann
-    
-    Settings settings;
-    private float sprint_spd;
-    public float basespeed = 12f;
-    public float speed;
+{    
+    public GameObject kamera;
+    public float speed = 12f;
+    public float gravity = 0f;
+    public float mouseSensitivity = 200f;
     void Start()
     {
-       settings = GetComponent<Settings>(); 
+       Cursor.lockState = CursorLockMode.Locked;
     }
     
     void Update()
     {
-        speed = basespeed * sprint_spd;
-        Move();
+        Move(); 
+        
     }
     void Move()
     {
-        if (Input.GetKey(settings.set_forward))
-        {
-            //movement nach vorne
-            transform.position = transform.position + transform.forward * Time.deltaTime * speed;
-        }
-
-        if (Input.GetKey(settings.set_backwards))
-        {
-            //movement nach hinten
-            transform.position = transform.position - transform.forward * Time.deltaTime * speed;
-        }
-
-        if (Input.GetKey(settings.set_left))
-        {
-            //movement nach links
-            transform.position = transform.position - transform.right * Time.deltaTime * speed;
-        }
-
-        if (Input.GetKey(settings.set_right))
-        {
-            //movement nach rechts
-            transform.position = transform.position + transform.right * Time.deltaTime * speed;
-        }
-
-        if (Input.GetKey(settings.set_sprint))
-        {   //sprint
-            sprint_spd = 2f;  //1.3f; //2f = 2x min 1.0f sonst langsamer
-        }   
-        else 
-        {
-            sprint_spd = 1f; 
-        }
-
-        if (Input.GetKey(settings.set_jump))
-        {
-            //movement springen
-
-        }
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y") * -1;
+ 
+        Vector3 xRotation = new Vector3(0, mouseX, 0) * mouseSensitivity * Time.deltaTime;
+        transform.Rotate(xRotation);
+ 
+        Vector3 yRotation = new Vector3(mouseY, 0, 0) * mouseSensitivity * Time.deltaTime;
+        kamera.transform.Rotate(yRotation);
+ 
+        Vector3 move = transform.forward * y + transform.right * x + Vector3.up * gravity;
+        move = move * speed * Time.deltaTime;
+        GetComponent<CharacterController>().Move(move);
     }
 }   
