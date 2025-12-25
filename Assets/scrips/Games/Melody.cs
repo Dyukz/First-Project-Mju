@@ -14,7 +14,7 @@ public class Melody : MonoBehaviour
     private float direction = 1;
     private float limit = 500;
     private float score = 0;
-    private float targedSize = 50;
+    private float targetSize = 50;
 
     void OnEnable()
     {   
@@ -39,7 +39,7 @@ public class Melody : MonoBehaviour
     {   
         //Vector2 setSize = new Vector2(size, 50);
         //target.sizeDelta = setSize;
-        float randomTarget = Random.Range(limit * -1 + targedSize, limit - targedSize);
+        float randomTarget = Random.Range(limit * -1 + targetSize, limit - targetSize);
     
         Vector3 newTargetPos = new Vector3(randomTarget, target.anchoredPosition.y, 0);
         target.anchoredPosition = newTargetPos;
