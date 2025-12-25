@@ -7,66 +7,42 @@ public class Melody : MonoBehaviour
     public RectTransform slider;
     public RectTransform target;
     public TMP_Text scoreText;
-    public Canvas canvas;
-    public float speed = 700f;
-    public float maxScore = 5f;
+    public KeyCode keyCode = KeyCode.F;
+    public float speed = 700;
+    public float maxScore = 5;
     
-    private float direction = 1f;
-    private float limit = 500f;
+    private float direction = 1;
+    private float limit = 500;
     private float score = 0;
-    private float size = 50;
+    private float targedSize = 50;
 
-
-    public void Reset()
+    void OnEnable()
     {   
         score = 0;
         scoreText.text = "" + score + " / " + maxScore;
         NewTarget();
+
     }
+
     void Update()
     {
         SliderMove();
-        if (Input.GetKeyDown("f"))
+        
+        if (Input.GetKeyDown(keyCode))
         {
-            if (TestIfOn())
-            {
-                score++;
-            }
-            else
-            {
-                score = 0;
-            }
-
-            scoreText.text = "" + score + " / " + maxScore;
-            NewTarget();
-            
-            if (score >= maxScore)
-        {
-            GameWin();
-        }
+            HandleScore();
         }
         
     }
+
     void NewTarget()
     {   
-        switch (score)
-        {
-            case 0:
-                size = 200;
-                break;
-            case 1:
-                size = 100;
-                break;
-            case >= 3:
-                size = 50;
-                break;
-        }
-
-        Vector2 setSize = new Vector2(size, 50);
-        target.sizeDelta = setSize;
-        float randomTarget = Random.Range(limit * -1 + 50, limit - 50);
-        Vector3 setTarget = new Vector3(randomTarget, target.anchoredPosition.y, 0);
-        target.anchoredPosition = setTarget;
+        //Vector2 setSize = new Vector2(size, 50);
+        //target.sizeDelta = setSize;
+        float randomTarget = Random.Range(limit * -1 + targedSize, limit - targedSize);
+    
+        Vector3 newTargetPos = new Vector3(randomTarget, target.anchoredPosition.y, 0);
+        target.anchoredPosition = newTargetPos;
     }
     
     bool TestIfOn()
@@ -78,6 +54,7 @@ public class Melody : MonoBehaviour
         }
         else return false;
     }
+    
     void SliderMove()
     {
         float pos = slider.anchoredPosition.x;
@@ -89,9 +66,30 @@ public class Melody : MonoBehaviour
             direction *= -1;
         }
     }
+
+    void HandleScore()
+    {
+        if (TestIfOn())
+        {
+            score++;
+            NewTarget();
+        }
+        else
+        {
+            score = 0;
+        }
+
+        scoreText.text = "" + score + " / " + maxScore;
+            
+        if (score >= maxScore)
+        {
+            GameWin();
+        }
+    }
+
     void GameWin()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        canvas.GetComponent<GameUIManager>().ExitGame(0);
+        gameObject.SetActive(false);
     }
 }

@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Numbers: MonoBehaviour
+public class Panes: MonoBehaviour
 {
-    public Button[] buttons = new Button[18];
-    public Canvas canvas;
-    float buttonCheck = 0;
-    public void Reset()
+    public Button[] buttons = new Button[18]; //max buttons --> 18 rn
+    
+    public void OnEnable()
     {   
         Cursor.lockState = CursorLockMode.None;
         ChooseGreen();
     }
+    
     void ChooseGreen()
     {
         for (int i = 0; i < buttons.Length; i++)
@@ -39,7 +39,7 @@ public class Numbers: MonoBehaviour
 
     void Check()
     {   
-        buttonCheck = 0;
+        float buttonCheck = 0;
         for (int i = 0; i < buttons.Length; i++)
         {
             if (buttons[i].image.color == Color.green)
@@ -58,6 +58,6 @@ public class Numbers: MonoBehaviour
     void GameWin()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        canvas.GetComponent<GameUIManager>().ExitGame(1);
+        gameObject.SetActive(false);
     }
 }

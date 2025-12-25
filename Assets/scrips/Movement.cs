@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     public float mouseSensitivity = 200f;
     void Start()
     {
-       Cursor.lockState = CursorLockMode.Locked;
+       
     }
     
     void Update()
