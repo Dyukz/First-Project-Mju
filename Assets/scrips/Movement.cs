@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
     
     void Update()
     {
-        Move(); 
+        //Move(); 
         
     }
     void Move()
