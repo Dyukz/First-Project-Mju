@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,11 +31,16 @@ public class Order : MonoBehaviour
                 GameWin();
             }
         }
-        else
+        else if (index < currentNum)
         { 
+            return;
+        }
+        else
+        {
             NewPattern();
             return;
         }
+        
     }
 
     void OnEnable()
@@ -59,7 +65,7 @@ public class Order : MonoBehaviour
 
         while (true)
         {
-            int check = CheckFree(Random.Range(0, buttons.Length));
+            int check = CheckFree(UnityEngine.Random.Range(0, buttons.Length));
             if (check != -1)
             {
                 pattern[check] = patternLeft;
@@ -74,9 +80,7 @@ public class Order : MonoBehaviour
         }
     }
     int CheckFree(int index)
-
     {
-        
         for (int i = 0; i < buttons.Length; i++)
         {
             if (pattern[index] == -1)

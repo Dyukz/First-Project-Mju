@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {    
@@ -15,11 +16,6 @@ public class Movement : MonoBehaviour
     
     void Update()
     {
-        //Move(); 
-        
-    }
-    void Move()
-    {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         float mouseX = Input.GetAxis("Mouse X");
@@ -27,12 +23,14 @@ public class Movement : MonoBehaviour
  
         Vector3 xRotation = new Vector3(0, mouseX, 0) * mouseSensitivity * Time.deltaTime;
         transform.Rotate(xRotation);
- 
+
+        
         Vector3 yRotation = new Vector3(mouseY, 0, 0) * mouseSensitivity * Time.deltaTime;
         kamera.transform.Rotate(yRotation);
  
         Vector3 move = transform.forward * y + transform.right * x + Vector3.up * gravity;
         move = move * speed * Time.deltaTime;
         GetComponent<CharacterController>().Move(move);
+        
     }
 }   
