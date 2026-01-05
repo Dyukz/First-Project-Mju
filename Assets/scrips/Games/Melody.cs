@@ -3,7 +3,6 @@ using TMPro;
 
 public class Melody : MonoBehaviour
 {
-    
     public RectTransform slider;
     public RectTransform target;
     public TMP_Text scoreText;
@@ -14,14 +13,14 @@ public class Melody : MonoBehaviour
     private float direction = 1;
     private float limit = 500;
     private float score = 0;
-    private float targetSize = 50;
+    private float targetSize = 100;
 
     void OnEnable()
     {   
         score = 0;
         scoreText.text = "" + score + " / " + maxScore;
         NewTarget();
-
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Update()
@@ -83,13 +82,13 @@ public class Melody : MonoBehaviour
             
         if (score >= maxScore)
         {
-            GameWin();
+            CloseGame();
         }
     }
 
-    void GameWin()
+    void CloseGame()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

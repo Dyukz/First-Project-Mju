@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Order : MonoBehaviour
-{
+{   
     public Button[] buttons = new Button[14]; // max buttons --> 14 rn
     
     private TMP_Text[] texts = new TMP_Text[14];
@@ -12,10 +12,14 @@ public class Order : MonoBehaviour
     private int patternLeft;
     private int currentNum = 1;
 
-    void Start()
-    {
-        
-        
+    void OnEnable()
+    {   
+        Cursor.lockState = CursorLockMode.None;
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            texts[i] = buttons[i].GetComponentInChildren<TMP_Text>();
+        }
+        NewPattern();
     }
 
     public void Click(int button)
@@ -28,7 +32,7 @@ public class Order : MonoBehaviour
             currentNum++;
             if (currentNum == 15)
             {
-                GameWin();
+                CloseGame();
             }
         }
         else if (index < currentNum)
@@ -43,16 +47,7 @@ public class Order : MonoBehaviour
         
     }
 
-    void OnEnable()
-    {   
-        
-        Cursor.lockState = CursorLockMode.None;
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            texts[i] = buttons[i].GetComponentInChildren<TMP_Text>();
-        }
-        NewPattern();
-    }
+   
     public void NewPattern()
     {   
         currentNum = 1;
@@ -90,7 +85,7 @@ public class Order : MonoBehaviour
         }
         return -1;
     }
-    void GameWin()
+    void CloseGame()
     {
         Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);

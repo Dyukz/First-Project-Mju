@@ -5,16 +5,25 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {    
+    PlayerMain player;
     public GameObject kamera;
     public float speed = 12f;
     public float gravity = 0f;
     public float mouseSensitivity = 200f;
     void Start()
     {
-       
+       player = GetComponent<PlayerMain>();
     }
     
     void Update()
+    {
+        if (!player.inGame)
+        {
+            Move();
+        }
+    }
+
+    void Move()
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
@@ -31,6 +40,5 @@ public class Movement : MonoBehaviour
         Vector3 move = transform.forward * y + transform.right * x + Vector3.up * gravity;
         move = move * speed * Time.deltaTime;
         GetComponent<CharacterController>().Move(move);
-        
     }
 }   

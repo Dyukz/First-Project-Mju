@@ -2,10 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Panes: MonoBehaviour
-{
-    public Button[] buttons = new Button[18]; //max buttons --> 18 rn
-    
-    public void OnEnable()
+{   
+    public Button[] buttons;
+    void OnEnable()
     {   
         Cursor.lockState = CursorLockMode.None;
         ChooseGreen();
@@ -50,12 +49,12 @@ public class Panes: MonoBehaviour
 
             if (buttonCheck >= 36)
             {
-                GameWin();
+                CloseGame();
             }
         }
     }
 
-    void GameWin()
+    void CloseGame()
     {
         Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
