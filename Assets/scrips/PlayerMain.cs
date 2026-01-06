@@ -8,16 +8,21 @@ public class PlayerMain : MonoBehaviour
     public bool inGame = false;
     public GameObject[] games; // alle games reinmachen wenn das game active wird wird das script(game) auf den ausgeführt.
     public int currentRoom = 0;
-    public int currentTask;
+    public int currentTask = 0;
 
 
+    // Das script ist ein Test script zum Testen der Games. Einige Funktionen können und werden später übernommen allerdings nicht alle!
+    void Start()
+    {
+        
+    }
     void Update()
     {
         if (Input.GetKey(KeyCode.E))
         {
             if (currentTask != -1)
-            {
-                
+            {   
+                games[currentTask].SetActive(true);
             }
         }
     }
