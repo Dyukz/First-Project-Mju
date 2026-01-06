@@ -1375,10 +1375,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1442,12 +1442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31dc63fbd93d88c44a40d8087f9118a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  games:
-  - {fileID: 603729059}
-  - {fileID: 965376629}
-  - {fileID: 258122791}
-  - {fileID: 0}
-  testGameOpen: 1
 --- !u!1 &279113342
 GameObject:
   m_ObjectHideFlags: 0
@@ -4025,6 +4019,7 @@ MonoBehaviour:
   keyCode: 102
   speed: 700
   maxScore: 5
+  targetSize: 100
 --- !u!1 &611021810
 GameObject:
   m_ObjectHideFlags: 0
@@ -4418,6 +4413,7 @@ GameObject:
   - component: {fileID: 712247258}
   - component: {fileID: 712247259}
   - component: {fileID: 712247260}
+  - component: {fileID: 712247261}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4509,6 +4505,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b3829fa4a4c114c8341ecfb8c47f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &712247261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712247251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afa5d5cde316524f9782090de7aac69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inGame: 0
+  games: []
+  currentRoom: 0
+  currentTask: 0
 --- !u!1 &773974803
 GameObject:
   m_ObjectHideFlags: 0

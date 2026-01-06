@@ -4,16 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Order : MonoBehaviour
-{   
-    public Button[] buttons = new Button[14]; // max buttons --> 14 rn
-    
-    private TMP_Text[] texts = new TMP_Text[14];
-    private int[] pattern = new int [14];
+{
+    public Button[] buttons;
+
+    private TMP_Text[] texts;
+    private int[] pattern;
     private int patternLeft;
     private int currentNum = 1;
 
     void OnEnable()
     {   
+        pattern = new int [buttons.Length];
+        texts = new TMP_Text[buttons.Length];
         Cursor.lockState = CursorLockMode.None;
         for (int i = 0; i < buttons.Length; i++)
         {

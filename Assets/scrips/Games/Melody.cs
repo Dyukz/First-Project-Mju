@@ -9,14 +9,16 @@ public class Melody : MonoBehaviour
     public KeyCode keyCode = KeyCode.F;
     public float speed = 700;
     public float maxScore = 5;
+    public float targetSize = 50;
     
     private float direction = 1;
     private float limit = 500;
     private float score = 0;
-    private float targetSize = 100;
+    
 
     void OnEnable()
-    {   
+    {
+        
         score = 0;
         scoreText.text = "" + score + " / " + maxScore;
         NewTarget();
@@ -35,9 +37,12 @@ public class Melody : MonoBehaviour
     }
 
     void NewTarget()
-    {   
+    {
         //Vector2 setSize = new Vector2(size, 50);
         //target.sizeDelta = setSize;
+        
+        Vector2 setSize = new Vector2(targetSize, 75);
+        target.sizeDelta = setSize;
         float randomTarget = Random.Range(limit * -1 + targetSize, limit - targetSize);
     
         Vector3 newTargetPos = new Vector3(randomTarget, target.anchoredPosition.y, 0);
