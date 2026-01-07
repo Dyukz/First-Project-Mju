@@ -21,7 +21,7 @@ public class enemie : MonoBehaviour
 
             if (coolDown >= 2f)
             {
-                other.GetComponent<PlayerMain>().playerHealth -= 10;
+                other.GetComponent<PlayerMain>().playerHealth -= 5;
                 coolDown = 0;
             }
             
