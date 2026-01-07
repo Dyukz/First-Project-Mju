@@ -19,7 +19,7 @@ public class enemie : MonoBehaviour
         if (other.tag == "player")
         {
 
-            if (coolDown >= 0f)
+            if (coolDown >= 2f)
             {
                 other.GetComponent<PlayerMain>().playerHealth -= 10;
                 coolDown = 0;
