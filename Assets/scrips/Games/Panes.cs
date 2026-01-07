@@ -1,9 +1,11 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Panes: MonoBehaviour
 {   
     public Button[] buttons;
+    public Tasks manager;
     void OnEnable()
     {   
         Cursor.lockState = CursorLockMode.None;
@@ -58,5 +60,6 @@ public class Panes: MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
+        manager.TaskComplete();
     }
 }

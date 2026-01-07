@@ -2,7 +2,9 @@ using UnityEngine;
 using TMPro;
 
 public class Melody : MonoBehaviour
-{
+{   
+    
+    public Tasks manager;
     public RectTransform slider;
     public RectTransform target;
     public TMP_Text scoreText;
@@ -95,5 +97,6 @@ public class Melody : MonoBehaviour
     {
         gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+        manager.TaskComplete();
     }
 }

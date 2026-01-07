@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class enemie : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-    private float coolDown = 1;
+    private float coolDown = 0;
     void Start()
     {
         
@@ -11,7 +11,7 @@ public class enemie : MonoBehaviour
    
     void Update()
     {
-    coolDown += Time.deltaTime;
+    coolDown -= Time.deltaTime;
     }
 
     void OnTriggerStay(Collider other)
@@ -19,10 +19,10 @@ public class enemie : MonoBehaviour
         if (other.tag == "player")
         {
 
-            if (coolDown >= 2f)
+            if (coolDown <= 0f)
             {
-                other.GetComponent<PlayerMain>().playerHealth -= 5;
-                coolDown = 0;
+                other.GetComponent<PlayerMain>().playerHealth -= 10f;
+                coolDown = 1;
             }
             
            

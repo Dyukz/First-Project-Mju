@@ -2,7 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Colors : MonoBehaviour
-{
+{   
+    
+    public Tasks manager;
     public Color[] colors = {Color.blue, Color.red, Color.green, Color.magenta, Color.yellow};
     public RawImage[] panels;
 
@@ -61,5 +63,6 @@ public class Colors : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
+        manager.TaskComplete();
     }
 }

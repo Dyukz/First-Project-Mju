@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Order : MonoBehaviour
 {
     public Button[] buttons;
+    public Tasks manager;
 
     private TMP_Text[] texts;
     private int[] pattern;
@@ -91,5 +92,6 @@ public class Order : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
+        manager.TaskComplete();
     }
 }
