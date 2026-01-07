@@ -23,8 +23,8 @@ public class PlayerMain : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             if (currentTask != -1)
-            {   
-                games[currentTask].SetActive(true);
+            {
+                GetComponent<Tasks>().OpenTask(currentTask);
             }
         }
     }
