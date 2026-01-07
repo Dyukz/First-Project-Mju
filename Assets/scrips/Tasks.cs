@@ -6,7 +6,7 @@ public class Tasks : MonoBehaviour
     public GameObject[] rooms;
 
     public int[] currentRoomTasks;
-    void SetUpNewRoom(int room)
+    public void SetUpNewRoom(int room)
     {
         currentRoomTasks = new int[rooms[room].transform.GetChild(0).transform.childCount];
 

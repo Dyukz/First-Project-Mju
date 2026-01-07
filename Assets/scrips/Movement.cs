@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour
         kamera.transform.Rotate(yRotation);
  
         Vector3 move = transform.forward * y + transform.right * x + Vector3.up * gravity;
-        move = move * player.speed * Time.deltaTime;
+        move = move * player.playerSpeed * Time.deltaTime;
         GetComponent<CharacterController>().Move(move);
     }
 }   

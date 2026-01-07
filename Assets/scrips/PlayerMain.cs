@@ -10,7 +10,7 @@ public class PlayerMain : MonoBehaviour
     public int currentRoom = 0;
     public int currentTask = 0;
 
-    public float speed = 5f;
+    public float playerSpeed = 5f;
     public float playerHealth = 100f;
 
     // Das script ist ein Test script zum Testen der Games. Einige Funktionen können und werden später übernommen allerdings nicht alle!
@@ -35,7 +35,11 @@ public class PlayerMain : MonoBehaviour
 
         if (trigger != null && trigger.type == "room")
         {
-            currentRoom = trigger.id;
+            if (trigger.id > currentRoom)
+            {
+                currentRoom = trigger.id;
+                GetComponent<Tasks>().SetUpNewRoom(currentRoom);
+            }
         }
 
         if (trigger != null && trigger.type == "task")
