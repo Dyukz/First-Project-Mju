@@ -7,7 +7,6 @@ public class Movement : MonoBehaviour
 {    
     PlayerMain player;
     public GameObject kamera;
-    public float speed = 12f;
     public float gravity = 0f;
     public float mouseSensitivity = 200f;
     void Start()
@@ -38,7 +37,7 @@ public class Movement : MonoBehaviour
         kamera.transform.Rotate(yRotation);
  
         Vector3 move = transform.forward * y + transform.right * x + Vector3.up * gravity;
-        move = move * speed * Time.deltaTime;
+        move = move * player.speed * Time.deltaTime;
         GetComponent<CharacterController>().Move(move);
     }
 }   
