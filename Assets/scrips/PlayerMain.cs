@@ -6,9 +6,8 @@ using UnityEngine;
 public class PlayerMain : MonoBehaviour
 {
     public bool inGame = false;
-    public GameObject[] games; // alle games reinmachen wenn das game active wird wird das script(game) auf den ausgeführt.
-    public int currentRoom = 0;
-    public int currentTask = 0;
+    private int currentRoom = -1;
+    private int currentTask = -1;
 
     public float playerSpeed = 5f;
     public float playerHealth = 100f;
@@ -20,8 +19,6 @@ public class PlayerMain : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(currentRoom);
-        Debug.Log(currentTask);
         if (Input.GetKey(KeyCode.E))
         {
             if (currentTask != -1)
@@ -46,7 +43,7 @@ public class PlayerMain : MonoBehaviour
 
         if (trigger != null && trigger.type == "task")
         {
-           currentTask = trigger.id;
+            currentTask = trigger.id;
         }
     }
 
