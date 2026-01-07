@@ -20,6 +20,8 @@ public class PlayerMain : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log(currentRoom);
+        Debug.Log(currentTask);
         if (Input.GetKey(KeyCode.E))
         {
             if (currentTask != -1)
