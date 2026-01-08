@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tasks : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class Tasks : MonoBehaviour
         }
         else if (inTask && Input.GetKey(KeyCode.Escape))
             {   
-                inTask = false;
+                ManageUis(false);
                 games[currentRoomTasks[currentTask]].SetActive(false);
             }
     }
@@ -56,16 +57,22 @@ public class Tasks : MonoBehaviour
     void OpenTask(int term)
     {   
         if (!completedTasks[term])
-        {
-            inTask = true;
+        {   
+            ManageUis(true);
             games[currentRoomTasks[term]].SetActive(true);
         }
         else return;
     }
 
+    void ManageUis(bool state)
+    {
+        inTask = state;
+        player.crosshair.SetActive(!state);
+
+    }
     public void TaskComplete()
     {   
-        inTask = false;
+        ManageUis(false);
         completedTasks[currentTask] = true;
         for (int i = 0; i < completedTasks.Length; i++)
         {

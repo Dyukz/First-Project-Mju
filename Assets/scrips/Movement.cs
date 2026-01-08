@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
     public GameObject kamera;
     public float gravity = 0f;
     public float mouseSensitivity = 200f;
+
+    private float xRotation = 0;
     void Start()
     {
     }
@@ -24,18 +26,19 @@ public class Movement : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y") * -1;
- 
-        Vector3 xRotation = new Vector3(0, mouseX, 0) * mouseSensitivity * Time.deltaTime;
-        transform.Rotate(xRotation);
 
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        transform.Rotate(Vector3.up * mouseX);
         
-        Vector3 yRotation = new Vector3(mouseY, 0, 0) * mouseSensitivity * Time.deltaTime;
-        kamera.transform.Rotate(yRotation);
- 
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -45f, 45f);
+
+        kamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
         Vector3 move = transform.forward * y + transform.right * x + Vector3.up * gravity;
-        move = move * GetComponent<PlayerMain>().playerSpeed * Time.deltaTime;
+        move *= GetComponent<PlayerMain>().playerSpeed * Time.deltaTime;
+
         GetComponent<CharacterController>().Move(move);
     }
 }   
