@@ -8,17 +8,24 @@ public class PanesButton : MonoBehaviour
 {   
     private PanesMain main;
     private bool isOn = false;
-    
-    void SetUp()
+
+    void Awake()
     {
-        float r = Random.Range(1, 4);
-        if (r == 1)
+        main = transform.parent.gameObject.GetComponentInParent<PanesMain>();
+    }
+    public void Init()
+    {
+        if (Random.Range(1, 4) == 1)
         {
             gameObject.GetComponent<UnityEngine.UI.Image>().color = Color.green;
             isOn = true;
             main.Check(1);
         }
-        else isOn = false;
+        else
+        { 
+            isOn = false;
+            gameObject.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+        }
         
     }
 
@@ -37,11 +44,5 @@ public class PanesButton : MonoBehaviour
             main.Check(-1);
         }
         
-    }
-
-    public void SetMain(PanesMain panesMain)
-    {
-        main = panesMain;
-        SetUp();
     }
 }

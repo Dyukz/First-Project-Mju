@@ -14,6 +14,7 @@ public class Tasks : MonoBehaviour
     private int currentRoom;
     private int currentTask = -1;
     private int[] currentRoomTasks;
+    private int currentRoomTaskCount;
 
     void Start()
     {
@@ -40,7 +41,6 @@ public class Tasks : MonoBehaviour
 
     public void SetUpNewRoom(int room)
     {   
-        int currentRoomTaskCount = rooms[room].GetComponent<RoomValue>().terminals.transform.childCount;
         currentRoomTasks = new int[currentRoomTaskCount];
         for (int i = 0; i < currentRoomTasks.Length; i++)
         {
@@ -101,6 +101,10 @@ public class Tasks : MonoBehaviour
             if (trigger.id == 0 || completedRooms[trigger.id - 1])
         {
             currentRoom = trigger.id;
+            if (trigger.tasks != null)
+                {
+                    currentRoomTaskCount = trigger.tasks.transform.childCount;
+                }
             SetUpNewRoom(currentRoom);
         }
         }

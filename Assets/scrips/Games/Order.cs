@@ -33,7 +33,7 @@ public class Order : MonoBehaviour
         {   
             buttons[button].image.color = Color.green;
             currentNum++;
-            if (currentNum == 15)
+            if (currentNum == buttons.Length +1)
             {
                 CloseGame();
             }

@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
    
     void Update()
     {
-    coolDown -= Time.deltaTime;
+        coolDown -= Time.deltaTime;
     }
 
     void OnTriggerStay(Collider other)
