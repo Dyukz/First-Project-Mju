@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
@@ -11,14 +12,12 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        timeSek += Time.deltaTime;
         time += Time.deltaTime;
-        if (timeSek >= 60) 
-        {
-            timeSek -= 60;
-            timeMin++;
-        }
-        if (Mathf.Floor(timeSek) < 10)
+
+        timeMin = Mathf.Floor(time / 60);
+        timeSek = Mathf.Floor((time / 60 - timeMin) * 60);
+
+        if (timeSek < 10)
         {
             timer.text = timeMin + " : 0" + Mathf.Floor(timeSek);
         }
