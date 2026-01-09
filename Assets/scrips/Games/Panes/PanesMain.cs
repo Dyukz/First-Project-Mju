@@ -9,15 +9,14 @@ public class PanesMain: MonoBehaviour
     public Tasks manager;
     public GameObject buttonPrefab;
     public int rows = 3;
+    public int columns = 7;
 
-    private int columns = 0;
     private int maxButtons = 0;
     private int currentOn = 0;
 
     void Awake()
     {
         CreateButtons();
-        columns = buttonParent.GetComponent<GridLayoutGroup>().constraintCount;
     }
 
     void OnEnable()

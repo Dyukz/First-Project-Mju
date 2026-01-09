@@ -6977,6 +6977,7 @@ MonoBehaviour:
   manager: {fileID: 712247262}
   buttonPrefab: {fileID: 3846983910616710652, guid: 498db264d81bfd0408b2c741c12b5667, type: 3}
   rows: 3
+  columns: 7
 --- !u!1 &1011485201
 GameObject:
   m_ObjectHideFlags: 0
