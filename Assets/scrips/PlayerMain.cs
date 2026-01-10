@@ -10,7 +10,7 @@ public class PlayerMain : MonoBehaviour
     public GameObject crosshair;
 
     public GameObject kamera;
-    public float gravity = 0f;
+    public float gravity = -10f;
     public float mouseSensitivity = 200f;
     private float xRotation = 0;
 
