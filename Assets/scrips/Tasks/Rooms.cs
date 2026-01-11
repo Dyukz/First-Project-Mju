@@ -19,7 +19,8 @@ public class Rooms : MonoBehaviour
         //Setting the game for each terminal && Completion State
         for (int i=0; i<terminalCount; i++)
         {
-            tasksOnTerminals[i] = Random.Range(0, taskMain.games.Length);
+            tasksOnTerminals[i] = Random.Range(0, taskMain.games.Length -1);
+            //tasksOnTerminals[i] = 2;
             completedTasks[i] = false;
         }
     }
