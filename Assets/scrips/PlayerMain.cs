@@ -2,13 +2,19 @@ using System.Collections;
 using System.Data.Common;
 using Mono.Cecil.Cil;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMain : MonoBehaviour
 {
     public float playerSpeed = 5f;
+
+    [Header("Health")]
     public float playerHealth = 100f;
+    public Slider healthSlider;
+
     public GameObject crosshair;
 
+    [Header("Camera")]
     public GameObject kamera;
     public float gravity = -10f;
     public float mouseSensitivity = 200f;
@@ -17,6 +23,10 @@ public class PlayerMain : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+
+       
+        healthSlider.maxValue = playerHealth;
+        healthSlider.value = playerHealth;
     }
 
     void Update()
@@ -25,6 +35,8 @@ public class PlayerMain : MonoBehaviour
         {
             Move();
         }
+
+        
     }
 
     void Move()
@@ -34,17 +46,23 @@ public class PlayerMain : MonoBehaviour
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
         transform.Rotate(Vector3.up * mouseX);
-        
+
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -45f, 45f);
-
         kamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         Vector3 move = transform.forward * y + transform.right * x + Vector3.up * gravity;
-        move *= GetComponent<PlayerMain>().playerSpeed * Time.deltaTime;
+        move *= playerSpeed * Time.deltaTime;
 
         GetComponent<CharacterController>().Move(move);
     }
-    
+
+    public void TakeDamage(float damage)
+    {
+        playerHealth -= damage;
+        playerHealth = Mathf.Clamp(playerHealth, 0f, 100f);
+        healthSlider.value = playerHealth;
+    }
 }
