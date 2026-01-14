@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3651068390940803829}
   - component: {fileID: 5935465881637503922}
   - component: {fileID: 532253632955943283}
-  - component: {fileID: -1853046843659401091}
   m_Layer: 0
   m_Name: gegner
   m_TagString: Untagged
@@ -174,17 +173,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517dfe303af9c5a4989ef8f65b5459f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-1853046843659401091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4555559782222621895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6d69c31866208648bb0b43bf11a263e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 100
-  loot: {fileID: 0}

@@ -1,8 +1,7 @@
 using UnityEngine;
 
 public class bullet : MonoBehaviour
-{   
-    public int speed = 20;
+{
     public int lifetime = 5;
     void Start()
     {
@@ -12,6 +11,6 @@ public class bullet : MonoBehaviour
     
     void Update()
     {
-        transform.position +=  transform.forward * Time.deltaTime * speed;
+        transform.position +=  transform.forward * Time.deltaTime * 5;
     }
 }
