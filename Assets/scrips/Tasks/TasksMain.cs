@@ -35,7 +35,10 @@ public class Tasks : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         TriggerValue trigger = other.GetComponent<TriggerValue>();
-
+        if (trigger == null)
+        {
+            return;
+        }
         switch (trigger.type)
         {
             case "room":
