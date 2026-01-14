@@ -66,7 +66,7 @@ public class Tasks : MonoBehaviour
     void HandleState(bool state)
     {
         inTask = state;
-        games[currentRoom.tasksOnTerminals[currentTerminal]].SetActive(true);
+        games[currentRoom.tasksOnTerminals[currentTerminal]].SetActive(state);
     }
 
     public void TaskComplete()
