@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 532253632955943283}
   - component: {fileID: -1853046843659401091}
   m_Layer: 0
-  m_Name: gegner
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 4555559782222621895}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 759.7251, y: 32.615463, z: 130.521}
+  m_LocalPosition: {x: 654.2211, y: 20, z: 166.55916}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -186,5 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d69c31866208648bb0b43bf11a263e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPrefab: {fileID: 4095313682194622522, guid: d1df7fe45459ac148be18fa42facf134, type: 3}
+  healthbar: {fileID: 7894428169881593403, guid: 2ccc9811fd5a398459e5102872983d28, type: 3}
   life: 100
   loot: {fileID: 0}

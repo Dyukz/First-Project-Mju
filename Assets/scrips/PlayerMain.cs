@@ -24,7 +24,6 @@ public class PlayerMain : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-       
         healthSlider.maxValue = playerHealth;
         healthSlider.value = playerHealth;
     }
@@ -35,8 +34,6 @@ public class PlayerMain : MonoBehaviour
         {
             Move();
         }
-
-        
     }
 
     void Move()

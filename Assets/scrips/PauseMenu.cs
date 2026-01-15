@@ -6,13 +6,10 @@ public class PauseMenu : MonoBehaviour
     public bool inPause = false;
     void Update()
     {
-        if(!GetComponent<Tasks>().inTask)
+        if(!GetComponent<Tasks>().inTask && Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                inPause = !inPause;
-                UpdatePause(inPause);
-            }
+            inPause = !inPause;
+            UpdatePause(inPause);
         }
     }
 
