@@ -3,18 +3,24 @@ using UnityEngine.UI;
 
 public class Damageable : MonoBehaviour
 {   
-    public GameObject canvasPrefab;
-    public Slider healthbar;
+    
     public float life = 100;
     public GameObject loot;
+    public GameObject player;
 
-    Slider healthSlider;
-    GameObject canvas;
+    private Slider healthbar;
+    private Slider healthSlider;
+    private GameObject canvas;
     private float killHealthbar = 0;
+    private float maxLife = 100;
 
     void Start()
-    {
-       canvas = Instantiate(canvasPrefab, transform.position, transform.rotation, gameObject.transform);
+    {   
+        GameObject canvasPrefab = Resources.Load<GameObject>("Prefabs/CodeNeeded/Canvas");
+        canvas = Instantiate(canvasPrefab, transform.position, transform.rotation, gameObject.transform);
+
+        healthbar = Resources.Load<Slider>("Prefabs/CodeNeeded/Healthbar");
+        maxLife = life;
     }
 
     void Update()
@@ -25,7 +31,13 @@ public class Damageable : MonoBehaviour
             Destroy(healthSlider.gameObject);
             healthSlider = null;
         }
+        else if (healthSlider != null)
+        {
+            healthSlider.transform.LookAt(player.transform);
+        }
+        
     }
+
     // when hit
     void OnTriggerEnter(Collider collision)
     {
@@ -41,6 +53,7 @@ public class Damageable : MonoBehaviour
             }
         }
     }
+
     void Die()
     {
         Destroy(gameObject);
@@ -52,6 +65,7 @@ public class Damageable : MonoBehaviour
         {   
             Vector3 pos = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
             healthSlider = Instantiate(healthbar, pos, transform.rotation, canvas.transform);
+            healthSlider.maxValue = maxLife;
         }
 
         life -= damage;

@@ -3,33 +3,42 @@ using UnityEngine.UI;
 
 public class Tasks : MonoBehaviour
 {
-    public GameObject[] games; // alle games reinmachen
-    
-    public int roomCount;
+    public GameObject[] games;
     public bool inTask = false;
-    public bool[] completedRooms;
-
+    public int maxRooms;
+    
+    private bool[] completedRooms;
     private Rooms currentRoom;
     private int currentTerminal = -1;
 
     void Start()
     {
-        completedRooms = new bool [roomCount];
+        completedRooms = new bool [maxRooms];
     }
 
     void Update()
     {
-        if (currentTerminal != -1 && !inTask)
+        if (inTask && Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.GetKey(KeyCode.E) && !currentRoom.completedTasks[currentTerminal])
-            {
-                HandleState(true);
-            }
+            CloseTask();
+            return;
         }
-        else if (inTask && Input.GetKey(KeyCode.Escape))
+
+        if (currentTerminal != -1 && !inTask && Input.GetKeyDown(KeyCode.E))
         {
-            HandleState(false);
+            OpenTask();
         }
+    }
+
+    void OpenTask()
+    {
+        inTask = currentRoom.TryOpenTask(currentTerminal);
+    }
+
+    void CloseTask()
+    {
+        currentRoom.CloseGame(currentTerminal);
+        inTask = false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -45,7 +54,7 @@ public class Tasks : MonoBehaviour
                 if (trigger.id == 0 || completedRooms[trigger.id - 1])
                 {
                     currentRoom = trigger.GetComponentInParent<Rooms>();
-                    currentRoom.roomId = trigger.id;
+                    currentRoom.OnRoomStart();
                 }
                 break;
             case "task":
@@ -57,32 +66,20 @@ public class Tasks : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         TriggerValue trigger = other.GetComponent<TriggerValue>();
-        if (trigger != null && trigger.type == "task" && trigger.id == currentRoom.roomId)
+        if (trigger != null && trigger.type == "task" && trigger.id == currentTerminal)
         {
             currentTerminal = -1;
         }
     }
 
-    void HandleState(bool state)
-    {
-        inTask = state;
-        games[currentRoom.tasksOnTerminals[currentTerminal]].SetActive(state);
-    }
-
     public void TaskComplete()
     {   
         inTask = false;
-        currentRoom.completedTasks[currentTerminal] = true;
-        
-        for (int i = 0; i < currentRoom.completedTasks.Length; i++)
+        // Check if all tasks in the room have been completed
+        if (currentRoom.TaskCompleted(currentTerminal))
         {
-            if (!currentRoom.completedTasks[i])
-            {
-                return;
-            }
+            HandleRoomCompletion(currentRoom.roomId);
         }
-
-        HandleRoomCompletion(currentRoom.roomId);
     }
 
     void HandleRoomCompletion(int room)
@@ -90,6 +87,4 @@ public class Tasks : MonoBehaviour
         print("ALL TASKS COMPLETED!!! in Room: "+ room);
         completedRooms[room] = true;
     }
-
-    
 }
