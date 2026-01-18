@@ -7,9 +7,11 @@ public class Tasks : MonoBehaviour
     public bool inTask = false;
     public int maxRooms;
     
+    public int currentTerminal = -1;
+    
     private bool[] completedRooms;
     private Rooms currentRoom;
-    private int currentTerminal = -1;
+    
 
     void Start()
     {

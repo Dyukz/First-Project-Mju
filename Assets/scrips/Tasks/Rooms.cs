@@ -33,17 +33,22 @@ public class Rooms : MonoBehaviour
 
     public void OnRoomStart()
     {   
+        GameObject terminalTrigger = Resources.Load<GameObject>("Prefabs/CodeNeeded/TerminalTrigger");
         Canvas canvasPrefab = Resources.Load<Canvas>("Prefabs/CodeNeeded/Canvas");
         GameObject terminalText = Resources.Load<GameObject>("Prefabs/CodeNeeded/TerminalText");
 
         int terminalCount = tasksParent.transform.childCount;
 
         for (int i=0; i < terminalCount; i++)
-        {
+        {   
             Transform currentTerminal = tasksParent.transform.GetChild(i);
+            
+            GameObject trigger = Instantiate(terminalTrigger, currentTerminal.position, currentTerminal.rotation, currentTerminal);
+            trigger.GetComponent<TriggerValue>().id = i;
+
             Canvas canvas = Instantiate(canvasPrefab, currentTerminal.position, currentTerminal.rotation, currentTerminal);
             
-            Vector3 pos = new Vector3(currentTerminal.position.x, currentTerminal.position.y + 1.5f, currentTerminal.position.z);
+            Vector3 pos = new Vector3(currentTerminal.position.x, currentTerminal.position.y + 1f, currentTerminal.position.z);
             Instantiate(terminalText, pos, transform.rotation, canvas.transform);
         }
     }
@@ -63,7 +68,7 @@ public class Rooms : MonoBehaviour
         completedTasks[task] = true;
 
         Transform currentTerminal = tasksParent.transform.GetChild(task);
-        TMP_Text text = currentTerminal.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>();
+        TMP_Text text = currentTerminal.GetChild(1).transform.GetChild(0).GetComponent<TMP_Text>();
         text.text = "Active Terminal";
         text.color = Color.green;
 
@@ -75,6 +80,7 @@ public class Rooms : MonoBehaviour
                 return false;
             }
         }
+        KillTerminals();
         return true;
     }
 
@@ -82,4 +88,21 @@ public class Rooms : MonoBehaviour
     {
         taskMain.games[tasksOnTerminals[task]].SetActive(false);
     }
+
+    void KillTerminals()
+    {   
+        int terminalCount = tasksParent.transform.childCount;
+        for (int i=0; i < terminalCount; i++)
+        {
+            Transform currentTerminal = tasksParent.transform.GetChild(i);
+
+            int termChilds = currentTerminal.childCount;
+            for (int b=0; b < termChilds; b++)
+            {
+                Destroy(currentTerminal.GetChild(b).gameObject);
+            }
+        }
+        taskMain.currentTerminal = -1;
+    }
+
 }
