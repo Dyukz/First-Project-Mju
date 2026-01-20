@@ -33,6 +33,7 @@ public class Damageable : MonoBehaviour
         else if (healthSlider != null)
         {
             healthSlider.transform.LookAt(Camera.main.transform);
+            healthSlider.transform.Rotate(0, 180f, 0);
         }
         
     }

@@ -35,17 +35,15 @@ public class Rooms : MonoBehaviour
 
     void Update()
     {
-        /*
+        
         for (int i=0; i< tasksParent.transform.childCount; i++)
         {
             if (texts[i] != null)
             {
                 texts[i].transform.LookAt(Camera.main.transform);
-                Vector3 rot = new Vector3(texts[i].transform.rotation.x, texts[i].transform.rotation.y * -1, texts[i].transform.rotation.z);
-                texts[i].transform.rotation = Quaternion.Euler(texts[i].transform.rotation.x, texts[i].transform.rotation.y * -1, texts[i].transform.rotation.z);
+                texts[i].transform.Rotate(0, 180f, 0);
             }   
         }
-        */
     }
 
     public void OnRoomStart()
