@@ -6,7 +6,6 @@ public class Damageable : MonoBehaviour
     
     public float life = 100;
     public GameObject loot;
-    public GameObject player;
 
     private Slider healthbar;
     private Slider healthSlider;
@@ -33,7 +32,7 @@ public class Damageable : MonoBehaviour
         }
         else if (healthSlider != null)
         {
-            healthSlider.transform.LookAt(player.transform);
+            healthSlider.transform.LookAt(Camera.main.transform);
         }
         
     }

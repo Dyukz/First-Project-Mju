@@ -10,6 +10,7 @@ public class Rooms : MonoBehaviour
 
     private bool[] completedTasks;
     private int[] tasksOnTerminals;
+    private GameObject[] texts;
     
     public int roomId = 0;
 
@@ -20,6 +21,7 @@ public class Rooms : MonoBehaviour
         //Setup the Arraylength based on the Terminalcount
         completedTasks = new bool[terminalCount];
         tasksOnTerminals = new int[terminalCount];
+        texts = new GameObject[terminalCount];
 
         //Setting the game for each terminal && Completion State
         for (int i=0; i <terminalCount; i++)
@@ -29,6 +31,21 @@ public class Rooms : MonoBehaviour
         }
 
         roomId = transform.GetSiblingIndex();
+    }
+
+    void Update()
+    {
+        /*
+        for (int i=0; i< tasksParent.transform.childCount; i++)
+        {
+            if (texts[i] != null)
+            {
+                texts[i].transform.LookAt(Camera.main.transform);
+                Vector3 rot = new Vector3(texts[i].transform.rotation.x, texts[i].transform.rotation.y * -1, texts[i].transform.rotation.z);
+                texts[i].transform.rotation = Quaternion.Euler(texts[i].transform.rotation.x, texts[i].transform.rotation.y * -1, texts[i].transform.rotation.z);
+            }   
+        }
+        */
     }
 
     public void OnRoomStart()
@@ -49,7 +66,7 @@ public class Rooms : MonoBehaviour
             Canvas canvas = Instantiate(canvasPrefab, currentTerminal.position, currentTerminal.rotation, currentTerminal);
             
             Vector3 pos = new Vector3(currentTerminal.position.x, currentTerminal.position.y + 1f, currentTerminal.position.z);
-            Instantiate(terminalText, pos, transform.rotation, canvas.transform);
+            texts[i] = Instantiate(terminalText, pos, transform.rotation, canvas.transform);
         }
     }
 
