@@ -59,7 +59,14 @@ public class PlayerMain : MonoBehaviour
     public void TakeDamage(float damage)
     {
         playerHealth -= damage;
-        playerHealth = Mathf.Clamp(playerHealth, 0f, 100f);
         healthSlider.value = playerHealth;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {  
+        if (other.gameObject.tag == "boss")
+        {
+            TakeDamage(999999);
+        }
     }
 }

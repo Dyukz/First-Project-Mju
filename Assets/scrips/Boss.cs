@@ -35,20 +35,6 @@ public class Boss : MonoBehaviour
         transform.LookAt(currentPoint.transform);
         temp = oldPos +1;
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "player")
-        {
-            PlayerMain player = other.GetComponent<PlayerMain>();
-            if (player == null)
-            {
-                return;
-            }
- 
-            player.playerHealth -= 999999;
-        }
-    }
     
     float difference(GameObject waypoint)
     {
