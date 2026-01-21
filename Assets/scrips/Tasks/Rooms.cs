@@ -102,6 +102,7 @@ public class Rooms : MonoBehaviour
     public void CloseGame(int task)
     {
         taskMain.games[tasksOnTerminals[task]].SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void KillTerminals()
