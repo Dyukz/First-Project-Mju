@@ -7,6 +7,7 @@ public class Rooms : MonoBehaviour
     public Tasks taskMain;
     
     public GameObject tasksParent;
+    public GameObject door;
 
     private bool[] completedTasks;
     private int[] tasksOnTerminals;
@@ -96,6 +97,8 @@ public class Rooms : MonoBehaviour
             }
         }
         KillTerminals();
+        if (door != null)
+            door.SetActive(false);
         return true;
     }
 
