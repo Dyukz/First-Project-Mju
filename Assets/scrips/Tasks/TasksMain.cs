@@ -5,7 +5,7 @@ public class Tasks : MonoBehaviour
 {
     public GameObject[] games;
     public bool inTask = false;
-    public int maxRooms;
+    public GameObject roomParent;
     
     public int currentTerminal = -1;
     
@@ -15,7 +15,7 @@ public class Tasks : MonoBehaviour
 
     void Start()
     {
-        completedRooms = new bool [maxRooms];
+        completedRooms = new bool [roomParent.transform.childCount];
     }
 
     void Update()
