@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {   
+    float score ;
     float time;
     void Start()
     {
         time = GetComponent<Timer>().time;
     }
 
-    void TimeToScore()
+    public void TimeToScore()
     {
-        
+     score = 140-(time/12);
+       score = mathf.Floor(score);
     }
 }
