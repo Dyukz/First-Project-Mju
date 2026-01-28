@@ -14,9 +14,10 @@ public class Score : MonoBehaviour
 
     public void TimeToScore()
     {
-     score = 140-(time/12);
-       score = Mathf.Floor(score);
-       text.text = ""+score;
-       text.gameObject.SetActive(true);
+        score = 140-(time/12);
+        score = Mathf.Clamp(score, 0, 100);
+        score = Mathf.Floor(score);
+        text.text = ""+score;
+        text.gameObject.SetActive(true);
     }
 }

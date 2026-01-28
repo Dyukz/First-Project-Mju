@@ -82,7 +82,7 @@ public class Melody : MonoBehaviour
         }
         else
         {
-            score = 0;
+            //score = 0;
         }
 
         scoreText.text = "" + score + " / " + maxScore;
