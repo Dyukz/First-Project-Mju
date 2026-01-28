@@ -3933,7 +3933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1074469626
 Transform:
   m_ObjectHideFlags: 0
@@ -4682,13 +4682,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1403370092}
+  - component: {fileID: 1403370093}
   m_Layer: 0
   m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1403370092
 Transform:
   m_ObjectHideFlags: 0
@@ -4701,10 +4702,22 @@ Transform:
   m_LocalPosition: {x: 35.302063, y: -19.017456, z: -123.943245}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7872464200154029963}
+  m_Children: []
   m_Father: {fileID: 5817118581029994286}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1403370093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403370091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16dbf60ad6c6273499aaadae2be06942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 712247260}
 --- !u!1 &1439016397
 GameObject:
   m_ObjectHideFlags: 0
@@ -6373,7 +6386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1873438903
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7525,6 +7538,7 @@ Transform:
   - {fileID: 3811581182991690469}
   - {fileID: 6869160681361258757}
   - {fileID: 5802654394037084474}
+  - {fileID: 7872464200154029963}
   - {fileID: 212435006273189501}
   - {fileID: 5921399193879343190}
   - {fileID: 7639052239515095038}
@@ -8709,7 +8723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskMain: {fileID: 712247262}
   tasksParent: {fileID: 6905726258053567983}
-  door: {fileID: 6982786431124338995}
+  door: {fileID: 1403370091}
   roomId: 1
 --- !u!4 &3079517427116751771
 Transform:
@@ -10484,11 +10498,11 @@ Transform:
   m_GameObject: {fileID: 6982786431124338995}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: -35.119812, y: 19.10376, z: 129.1705}
+  m_LocalPosition: {x: 0.18225098, y: 0.08630371, z: 5.2272644}
   m_LocalScale: {x: 0, y: 11.334256, z: 22.004738}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1403370092}
+  m_Father: {fileID: 200057722763369837}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!23 &7883316193545053961
 MeshRenderer:

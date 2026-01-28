@@ -7,14 +7,12 @@ public class Score : MonoBehaviour
     public TMP_Text text;
     float score ;
     float time;
-    void Start()
-    {
-        time = GetComponent<Timer>().time;
-    }
 
     public void TimeToScore()
-    {
-        score = 140-(time/12);
+    {   
+        time = GetComponent<Timer>().time;
+        Debug.Log(time);
+        score = 100-(time/12); //140 --> 8min dannach score -
         score = Mathf.Clamp(score, 0, 100);
         score = Mathf.Floor(score);
         text.text = ""+score;
