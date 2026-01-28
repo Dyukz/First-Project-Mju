@@ -13,6 +13,6 @@ public class Score : MonoBehaviour
     public void TimeToScore()
     {
      score = 140-(time/12);
-       score = mathf.Floor(score);
+       score = Mathf.Floor(score);
     }
 }

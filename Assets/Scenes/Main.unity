@@ -8507,7 +8507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskMain: {fileID: 712247262}
   tasksParent: {fileID: 6905726258053567983}
-  door: {fileID: 0}
+  door: {fileID: 6982786431124338995}
   roomId: 1
 --- !u!4 &3079517427116751771
 Transform:
@@ -10281,7 +10281,7 @@ Transform:
   m_GameObject: {fileID: 6982786431124338995}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 15.182236, y: 0.08628845, z: 5.2272987}
+  m_LocalPosition: {x: 0.18223572, y: 0.08628845, z: 5.227253}
   m_LocalScale: {x: 0, y: 11.334256, z: 22.004738}
   m_ConstrainProportionsScale: 0
   m_Children: []
