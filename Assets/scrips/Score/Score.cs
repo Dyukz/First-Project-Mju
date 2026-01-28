@@ -1,8 +1,10 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using TMPro;
 
 public class Score : MonoBehaviour
 {   
+    public TMP_Text text;
     float score ;
     float time;
     void Start()
@@ -14,5 +16,7 @@ public class Score : MonoBehaviour
     {
      score = 140-(time/12);
        score = Mathf.Floor(score);
+       text.text = ""+score;
+       text.gameObject.SetActive(true);
     }
 }

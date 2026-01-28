@@ -98,7 +98,7 @@ public class Rooms : MonoBehaviour
         }
         KillTerminals();
         if (door != null)
-            door.SetActive(false);
+            door.SetActive(!door.activeSelf);
         return true;
     }
 
