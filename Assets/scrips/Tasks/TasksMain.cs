@@ -8,6 +8,8 @@ public class Tasks : MonoBehaviour
     public GameObject roomParent;
     
     public int currentTerminal = -1;
+
+    public int counter = 0;
     
     private bool[] completedRooms;
     private Rooms currentRoom;
@@ -15,7 +17,8 @@ public class Tasks : MonoBehaviour
 
     void Start()
     {
-        completedRooms = new bool [roomParent.transform.childCount];
+        completedRooms = new bool [roomParent.transform.childCount + 1];
+        completedRooms[0] = true;
     }
 
     void Update()
@@ -53,11 +56,13 @@ public class Tasks : MonoBehaviour
         switch (trigger.type)
         {
             case "room":
-                if (trigger.id == 0 || completedRooms[trigger.id - 1])
-                {
+                if (trigger.id == counter && completedRooms[trigger.id])    
+                {                    
                     currentRoom = trigger.GetComponentInParent<Rooms>();
                     currentRoom.OnRoomStart();
+                    counter++; 
                 }
+                
                 break;
             case "task":
                 currentTerminal = trigger.id;
@@ -87,6 +92,10 @@ public class Tasks : MonoBehaviour
     void HandleRoomCompletion(int room)
     {
         print("ALL TASKS COMPLETED!!! in Room: "+ room);
-        completedRooms[room] = true;
+        completedRooms[room +1] = true;
+    }
+    void nothing()
+    {
+        
     }
 }

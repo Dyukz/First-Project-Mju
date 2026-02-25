@@ -49,6 +49,7 @@ public class Rooms : MonoBehaviour
 
     public void OnRoomStart()
     {   
+        
         GameObject terminalTrigger = Resources.Load<GameObject>("Prefabs/CodeNeeded/TerminalTrigger");
         Canvas canvasPrefab = Resources.Load<Canvas>("Prefabs/CodeNeeded/Canvas");
         GameObject terminalText = Resources.Load<GameObject>("Prefabs/CodeNeeded/TerminalText");
