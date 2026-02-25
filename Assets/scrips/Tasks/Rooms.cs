@@ -14,6 +14,7 @@ public class Rooms : MonoBehaviour
     private GameObject[] texts;
     
     public int roomId = 0;
+    public bool roomEntered = false;
 
     void Start()
     {   
@@ -67,6 +68,8 @@ public class Rooms : MonoBehaviour
             
             Vector3 pos = new Vector3(currentTerminal.position.x, currentTerminal.position.y + 1f, currentTerminal.position.z);
             texts[i] = Instantiate(terminalText, pos, transform.rotation, canvas.transform);
+
+            roomEntered = true;
         }
     }
 
