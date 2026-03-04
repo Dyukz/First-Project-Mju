@@ -12,10 +12,10 @@ public class Score : MonoBehaviour
     {   
         time = GetComponent<Timer>().time;
         Debug.Log(time);
-        score = 100-(time/12); //140 --> 8min dannach score -
+        score = 110-(time/12); //140 --> 8min dannach score - min*60/12
         score = Mathf.Clamp(score, 0, 100);
         score = Mathf.Floor(score);
-        text.text = ""+score;
+        text.text = "Score "+score;
         text.gameObject.SetActive(true);
     }
 }
