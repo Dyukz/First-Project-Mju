@@ -7,5 +7,6 @@ public class CreateScore : MonoBehaviour
     void OnEnable()
     {
         score.TimeToScore();
+        Time.timeScale = 0;
     }
 }
