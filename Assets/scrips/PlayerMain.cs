@@ -67,6 +67,7 @@ public class PlayerMain : MonoBehaviour
         if (other.gameObject.tag == "boss")
         {
             TakeDamage(999999);
+            GetComponent<PauseMenu>().DEAD();
         }
     }
 }

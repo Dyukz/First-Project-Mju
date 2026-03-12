@@ -1,16 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {   
     public GameObject mainMenu;
     public bool inPause = false;
-    void Update()
+   
+    public void DEAD()
     {
-        if(!GetComponent<Tasks>().inTask && Input.GetKeyDown(KeyCode.T))
-        {
-            inPause = !inPause;
-            UpdatePause(inPause);
-        }
+        inPause = true;
+        UpdatePause(inPause);
     }
 
     void UpdatePause(bool state)
@@ -18,9 +17,20 @@ public class PauseMenu : MonoBehaviour
         mainMenu.SetActive(state);
         
         if (state)
-        {
+        {   
+            Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
         }
-        else Time.timeScale = 1;
+        else 
+        {
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
 }
