@@ -61,13 +61,4 @@ public class PlayerMain : MonoBehaviour
         playerHealth -= damage;
         healthSlider.value = playerHealth;
     }
-
-    void OnTriggerEnter(Collider other)
-    {  
-        if (other.gameObject.tag == "boss")
-        {
-            TakeDamage(999999);
-            GetComponent<PauseMenu>().DEAD();
-        }
-    }
 }

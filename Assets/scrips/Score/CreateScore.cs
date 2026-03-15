@@ -8,5 +8,6 @@ public class CreateScore : MonoBehaviour
     {
         score.TimeToScore();
         Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
     }
 }

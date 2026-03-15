@@ -4,6 +4,7 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {   
+    public GameObject scoreScreen;
     public TMP_Text text;
     float score ;
     float time;
@@ -15,6 +16,6 @@ public class Score : MonoBehaviour
         score = Mathf.Clamp(score, 0, 100);
         score = Mathf.Floor(score);
         text.text = "Score "+score;
-        text.gameObject.SetActive(true);
+        scoreScreen.gameObject.SetActive(true);
     }
 }
